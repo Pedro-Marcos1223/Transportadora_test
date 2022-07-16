@@ -25,11 +25,6 @@ public class ProdutoRastreioController {
 	@Autowired
 	private ProdutoRastreioRepository repository;
 	
-	@PostMapping("/criarencomenda")
-	public ResponseEntity<ProdutoRastreio> post(@Valid @RequestBody ProdutoRastreio produto) {
-		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(produto));
-	}
-	
 	@GetMapping("/rastrear/{codigoDeRastreio}")
 	public ResponseEntity<ProdutoRastreio> getByCode(@PathVariable String codigoDeRastreio){
 		if(repository.findByCodigoDeRastreio(codigoDeRastreio).getCodigoDeRastreio().isEmpty()) {
